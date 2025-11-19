@@ -69,7 +69,18 @@ output HDMI-A-1 pos 1920 0
 ### Key bindings
 #
 # Basics:
-#
+#    
+    #Firefox Hidden Start
+    exec "swaymsg 'workspace number 5; exec firefox --new-window about:blank; workspace number 1'"
+    
+    exec "swaymsg 'workspace number 5; exec spotify'"
+
+    #Hide Waybar
+    bindsym $mod+h exec killall -SIGUSR1 waybar
+    
+    #Lockscreen
+    bindsym $mod+l exec ~/.config/sway/scripts/lock-blur.sh
+    
     # Start your file manager
     bindsym $mod+f exec thunar
     # Start your browser
@@ -103,10 +114,10 @@ output HDMI-A-1 pos 1920 0
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
+    #bindsym $mod+$left focus left
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    #bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -250,22 +261,25 @@ workspace 10 output eDP-1
 
 
 #titlebar
+for_window [class=".*"] border pixel 2
+for_window [app_id=".*"] border pixel 2
 
 for_window [class=".*"] title_format "%app_id"
 for_window [class=".*"] title_format "%class"
 for_window [app_id="firefox"] title_format "Firefox"
 for_window [app_id="org.mozilla.firefox"] title_format "Firefox"
-
-
+for_window [app_id="com.stremio.stremio"] border none
 #borders
+for_window [class="Stremio"] border none
+for_window [class="com.stremio.stremio"] border none
 
-# Nordic Blue Borders
+# Nordic Mavi Pencere Kenarları
 client.focused          #88c0d0 #2e3440 #88c0d0 #88c0d0 #88c0d0
 client.focused_inactive #4c566a #2e3440 #88c0d0 #4c566a #4c566a
 client.unfocused        #3b4252 #2e3440 #88c0d0 #3b4252 #3b4252
 client.urgent           #bf616a #2e3440 #88c0d0 #bf616a #bf616a
 
-# Window Borders
+# Pencere kenarlıkları
 default_border pixel 2
 default_floating_border pixel 2
 gaps inner 5
@@ -275,20 +289,27 @@ gaps outer 2
 
 # Opacity
 
-# All
+# Tüm pencerelere şeffaflık
 for_window [class=".*"] opacity 0.95
 for_window [app_id=".*"] opacity 0.95
 
-# Optional
-for_window [app_id="kitty"] opacity 0.95
+# Özel uygulamalar için farklı şeffaflık (opsiyonel)
+for_window [app_id="kitty"] opacity 0.85
 for_window [app_id="Alacritty"] opacity 0.95
 for_window [class="firefox"] opacity 0.98
 for_window [class="Code"] opacity 0.95
 for_window [app_id="org.gnome.Nautilus"] opacity 0.95
+for_window [class="spotify"] opacity 0.65
+for_window [class="Stremio"] opacity 1
+for_window [class="com.stremio.stremio"] opacity 1
+for_window [app_id="com.stremio.stremio"] opacity 1
 
-# Terminal
+# Terminal'leri daha şeffaf yapmak istersen
 for_window [app_id="kitty"] opacity 0.90
 for_window [app_id="foot"] opacity 0.90
 
-# Floating
+# Floating pencerelere farklı şeffaflık
 for_window [floating] opacity 0.90
+
+
+

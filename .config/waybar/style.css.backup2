@@ -91,9 +91,32 @@ window#waybar {
     padding: 0 10px;
 }
 
-/* Power Profile Widget - Simple Nordic Colors */
+
+#custom-power-profile.performance {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: #ffffff;
+}
+
+#custom-power-profile.balanced {
+    background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+    color: #2d3436;
+}
+
+#custom-power-profile.power-saver {
+    background: linear-gradient(135deg, #ff9ff3 0%, #feca57 100%);
+    color: #2d3436;
+    box-shadow: 0 0 10px rgba(255, 159, 243, 0.5);
+}
+
+#custom-power-profile.unknown {
+    background: #636e72;
+    color: #ffffff;
+}
+
+/* Power Profile Widget - Simple */
 #custom-power-profile {
     padding: 0 10px;
+    margin: 0 5px;
     color: #88c0d0;
 }
 
@@ -110,48 +133,5 @@ window#waybar {
 }
 
 #custom-power-profile.unknown {
-    color: #4c566a;
-}
-
-
-
-
-#custom-spotify.Playing {
-    color: #a3be8c;
-}
-
-#custom-spotify.Paused {
-    color: #ebcb8b;
-}
-
-#custom-spotify.idle {
-    color: #4c566a;
-}
-
-
-#custom-spotify.Playing {
-    color: #a3be8c;
-}
-
-#custom-spotify.Paused {
-    color: #ebcb8b;
-}
-
-#custom-spotify.idle {
-    color: #4c566a;
-}
-
-
-/* Spotify Widget */
-#custom-spotify {
-    padding: 0 10px;
-    color: #88c0d0;
-}
-
-#custom-spotify.Paused {
-    color: #4c566a;
-}
-
-#custom-spotify.idle {
     color: #4c566a;
 }

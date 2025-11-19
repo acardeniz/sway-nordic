@@ -1,13 +1,13 @@
 {
     "layer": "bottom",
     "position": "bottom",
-    "height": 32,
+    "height": 16,
     "spacing": 4,
     
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/power-profile", "custom/spotify"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "backlight", "cpu", "memory", "temperature", "battery", "tray"],
-
+    "modules-right": ["pulseaudio", "backlight", "cpu", "memory", "battery", "tray"],
+    
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
@@ -23,11 +23,34 @@
             "default": "○"
         }
     },
-
+    
+    "custom/power-profile": {
+        "exec": "~/.config/waybar/scripts/power-profile.sh",
+        "return-type": "json",
+        "interval": 10,
+        "on-click": "~/.config/waybar/scripts/power-profile-switch.sh",
+        "format": "{icon} {text}",
+        "format-icons": {
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰾆",
+            "unknown": "?"
+        }
+    },
+    "custom/spotify": {
+        "exec": "~/.config/waybar/scripts/spotify.sh",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "playerctl -p spotify play-pause",
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous",
+        "format": "{}"
+    },
+    
     "sway/mode": {
         "format": "<span style=\"italic\"> {}</span>"
     },
-
+    
     "clock": {
         "timezone": "Europe/Istanbul",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -35,18 +58,18 @@
         "format-alt": " {:%Y-%m-%d} ",
         "interval": 1
     },
-
+    
     "cpu": {
         "format": "CPU: {usage}%",
         "tooltip": true,
         "interval": 2
     },
-
+    
     "memory": {
         "format": "RAM: {used:0.1f}G/{total:0.1f}G",
         "interval": 2
     },
-
+    
     "temperature": {
         "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -55,13 +78,13 @@
         "format-critical": "TEMP: {temperatureC}°C !!!",
         "interval": 2
     },
-
+    
     "backlight": {
         "format": "BRT: {percent}%",
         "on-scroll-up": "brightnessctl set +5%",
         "on-scroll-down": "brightnessctl set 5%-"
     },
-
+    
     "battery": {
         "states": {
             "good": 95,
@@ -74,7 +97,7 @@
         "format-alt": "BAT: {time} {icon}",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
     },
-
+    
     "pulseaudio": {
         "format": "VOL: {volume}% {icon}",
         "format-bluetooth": "VOL: {volume}% {icon}",
@@ -91,7 +114,7 @@
         },
         "on-click": "pavucontrol"
     },
-
+    
     "tray": {
         "icon-size": 16,
         "spacing": 10
