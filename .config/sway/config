@@ -73,8 +73,11 @@ output HDMI-A-1 pos 1920 0
     #Firefox Hidden Start
     exec "swaymsg 'workspace number 5; exec firefox --new-window about:blank; workspace number 1'"
     
+    # Spotify
     exec "swaymsg 'workspace number 5; exec spotify'"
-
+    
+    #Screen filter
+    exec_always pkill wlsunset; sleep 1; wlsunset -l 39.9 -L 32.9 -t 4500 -T 6500 -d 1800
     #Hide Waybar
     bindsym $mod+h exec killall -SIGUSR1 waybar
     
@@ -123,6 +126,8 @@ output HDMI-A-1 pos 1920 0
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
+    # Screenshot
+    bindsym $mod+Print exec grimshot copy area
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -290,13 +295,13 @@ gaps outer 2
 # Opacity
 
 # Tüm pencerelere şeffaflık
-for_window [class=".*"] opacity 0.95
-for_window [app_id=".*"] opacity 0.95
+#for_window [class=".*"] opacity 0.95
+#for_window [app_id=".*"] opacity 0.95
 
 # Özel uygulamalar için farklı şeffaflık (opsiyonel)
-for_window [app_id="kitty"] opacity 0.85
+for_window [app_id="kitty"] opacity 0.75
 for_window [app_id="Alacritty"] opacity 0.95
-for_window [class="firefox"] opacity 0.98
+for_window [app_id="firefox"] opacity 0.90
 for_window [class="Code"] opacity 0.95
 for_window [app_id="org.gnome.Nautilus"] opacity 0.95
 for_window [class="spotify"] opacity 0.65
@@ -310,6 +315,7 @@ for_window [app_id="foot"] opacity 0.90
 
 # Floating pencerelere farklı şeffaflık
 for_window [floating] opacity 0.90
+
 
 
 

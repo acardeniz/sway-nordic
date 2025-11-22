@@ -1,1 +1,8 @@
-@theme "~/.config/rofi/themes/nord.rasi"
+configuration {
+    display-combi: "𐰀𐰺𐰀";
+    font: "Iosevka Nerd Font 14";
+    prompt: ">";   
+}
+
+@theme "~/.config/rofi/themes/nord2.rasi"
+
